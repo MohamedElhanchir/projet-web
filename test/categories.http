@@ -4,7 +4,7 @@ GET http://localhost:3000/categories/?take=30&skip=0
 GET http://localhost:3000/categories/
 
 ###
-GET http://localhost:3000/categories/3
+GET http://localhost:3000/categories/1
 ###
 POST http://localhost:3000/categories/ 
 Content-Type: application/json
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
 
-    "id": 6,
+    "id": 3,
     "nom": "philo"
 }
 

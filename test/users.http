@@ -1,11 +1,8 @@
-### Authentification d'un utilisateur
-
-
 ###
 GET http://localhost:3000/users/?take=9&skip=0
 
 ###
-GET http://localhost:3000/users/3
+GET http://localhost:3000/users/2
 ###
 POST http://localhost:3000/users/ 
 Content-Type: application/json
