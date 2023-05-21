@@ -1,0 +1,34 @@
+### Authentification d'un utilisateur
+
+
+###
+GET http://localhost:3000/users/?take=9&skip=0
+
+###
+GET http://localhost:3000/users/3
+###
+POST http://localhost:3000/users/ 
+Content-Type: application/json
+
+{
+  "nom": "fifi",
+  "email": "fifi@gmail.com",
+  "Password": "0000",
+  "role": "ADMIN"
+}
+###
+PATCH  http://localhost:3000/users/ 
+Content-Type: application/json
+
+
+{
+  "id": 2,
+  "nom": "karima",
+  "email": "karima@gmail.com",
+  "Password": "0000",
+  "role": "ADMIN"
+}
+
+###
+DELETE   http://localhost:3000/users/2
+

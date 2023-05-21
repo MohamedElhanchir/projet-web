@@ -1,0 +1,27 @@
+###
+GET http://localhost:3000/categories/?take=30&skip=0
+###
+GET http://localhost:3000/categories/
+
+###
+GET http://localhost:3000/categories/3
+###
+POST http://localhost:3000/categories/ 
+Content-Type: application/json
+
+{
+  "nom": "philosophie"
+}
+###
+PATCH  http://localhost:3000/categories/
+Content-Type: application/json
+
+{
+
+    "id": 6,
+    "nom": "philo"
+}
+
+###
+DELETE http://localhost:3000/categories/3
+

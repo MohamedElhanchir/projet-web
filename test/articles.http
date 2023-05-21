@@ -1,0 +1,36 @@
+###
+GET http://localhost:3000/articles/?take=9&skip=0
+
+###
+GET http://localhost:3000/articles/1
+###
+POST http://localhost:3000/articles/ 
+Content-Type: application/json
+
+{
+  "titre": "book",
+  "contenu": "physique",
+  "image": "io.jpg",
+  "createAt": "2023-05-13T13:43:17.455Z",
+  "updateAt": "2023-05-13T13:45:17.038Z",
+  "published": true,
+  "utilisateurId": 3
+}
+###
+PATCH  http://localhost:3000/articles/ 
+Content-Type: application/json
+
+
+{
+  "titre": "book",
+  "contenu": "math",
+  "image": "io.jpg",
+  "createAt": "2023-05-13T13:43:17.455Z",
+  "updateAt": "2023-05-13T13:45:17.038Z",
+  "published": true,
+  "utilisateurId": 3
+}
+
+###
+DELETE   http://localhost:3000/articles/3
+
