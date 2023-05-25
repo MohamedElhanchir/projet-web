@@ -1,11 +1,7 @@
-
-
 const {PrismaClient}=require('@prisma/client')
 const prisma=new PrismaClient
 
 const faker=require('faker')
-
-
 
 async function clearDb(){
  // Supprimer tous les commentaires

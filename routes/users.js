@@ -4,6 +4,8 @@ var router = express.Router()
 const {getUsers, getUser, addUser,delUser,updateUser}=require('../models/users')
 
 
+const authentification=require('../middleware/authentification')
+
 /**
  * get all users
  */
@@ -33,7 +35,7 @@ router.get('/:id([0-9]+)', function(req, res, next) {
 /**
  * create a new user
  */
-router.post('/', function(req, res, next) {
+router.post('/', authentification,function(req, res, next) {
  try{addUser(req.body).then(user=>res.json(user))}
  catch(error){
   console.error(error);
@@ -44,7 +46,7 @@ router.post('/', function(req, res, next) {
 /**
  * upadte user
  */
-router.patch('/',function(req, res, next) {
+router.patch('/',authentification,function(req, res, next) {
   try{updateUser(req.body).then(user=>res.json(user))}
   catch(error){
    console.error(error);
@@ -55,7 +57,7 @@ router.patch('/',function(req, res, next) {
 /**
  * delete a user
  */
-router.delete('/:id([0-9]+)', function(req, res, next) {
+router.delete('/:id([0-9]+)', authentification,function(req, res, next) {
  try{delUser(parseInt(req.params.id)).then(user=>res.json(user))}
  catch(error){
   console.error(error);

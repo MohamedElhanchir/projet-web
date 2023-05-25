@@ -18,10 +18,10 @@ Content-Type: application/json
 
 {
 
-    "id": 3,
+    "id": 14,
     "nom": "philo"
 }
 
 ###
-DELETE http://localhost:3000/categories/3
+DELETE http://localhost:3000/categories/14
 

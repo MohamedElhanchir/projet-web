@@ -10,20 +10,20 @@ POST http://localhost:3000/commentaires/
 Content-Type: application/json
 
 {
-  "email": "fouad@gmail.com",
+  "email": "fouad55@gmail.com",
   "contenu": "thank you",
-  "articleId": 1
+  "articleId": 8
 }
 ###
 PATCH  http://localhost:3000/commentaires/
 Content-Type: application/json
 
 {
-  "id": 2,
-  "email": "fouad@gmail.com",
+  "id": 966,
+  "email": "fouadojojk@gmail.com",
   "contenu": "ggggggggg",
-  "articleId": 1
+  "articleId": 7
 }
 ###
-DELETE http://localhost:3000/commentaires/2
+DELETE http://localhost:3000/commentaires/966
 

@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 
 const {getCategories, getCategorie, addCategorie,delCategorie,updateCategorie}=require('../models/categories')
+const authentification=require('../middleware/authentification')
 
 
 /**
@@ -33,7 +34,7 @@ router.get('/:id([0-9]+)', function(req, res, next) {
 /**
  * create a new categorie
  */
-router.post('/', function(req, res, next) {
+router.post('/', authentification,function(req, res) {
  try{addCategorie(req.body).then(user=>res.json(user))}
  catch(error){
   console.error(error);
@@ -45,7 +46,7 @@ router.post('/', function(req, res, next) {
  * upadte a categorie
  */
 
-router.patch('/',function(req, res, next) {
+router.patch('/',authentification,function(req, res) {
   try{updateCategorie(req.body).then(user=>res.json(user))}
   catch(error){
    console.error(error);
@@ -56,13 +57,13 @@ router.patch('/',function(req, res, next) {
 /**
  * delete a categorie
  */
-router.delete('/:id([0-9]+)', function(req, res, next) {
- try{delCategorie(parseInt(req.params.id)).then(user=>res.json(user))}
- catch(error){
-  console.error(error);
-  res.status(500).json({ error: 'Une erreur est survenue lors de la création du categorie '+ parseInt(req.params.id)});
-  }
-});
+router.delete('/:id([0-9]+)', authentification, (req, res, next) => {
+    try { delCategorie(parseInt(req.params.id)).then(user => res.json(user)); }
+    catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Une erreur est survenue lors de la création du categorie ' + parseInt(req.params.id) });
+    }
+  });
 
 
 

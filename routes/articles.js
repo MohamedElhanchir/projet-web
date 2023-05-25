@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
+const authentification=require('../middleware/authentification')
 
 const {getArticles, getArticle, addArticle,delArticle,updateArticle}=require('../models/articles')
 
@@ -34,7 +35,7 @@ router.get('/:id([0-9]+)',function(req, res, next) {
 /**
  * create a new article
  */
-router.post('/', function(req, res, next) {
+router.post('/', authentification,function(req, res, next) {
  try{addArticle(req.body).then(user=>res.json(user))}
  catch(error){
   console.error(error);
@@ -45,7 +46,7 @@ router.post('/', function(req, res, next) {
 /**
  * upadte article
  */
-router.patch('/',function(req, res, next) {
+router.patch('/',authentification,function(req, res, next) {
   try{updateArticle(req.body).then(user=>res.json(user))}
   catch(error){
    console.error(error);
@@ -56,7 +57,7 @@ router.patch('/',function(req, res, next) {
 /**
  * delete a article
  */
-router.delete('/:id([0-9]+)',function(req, res, next) {
+router.delete('/:id([0-9]+)',authentification,function(req, res, next) {
  try{delArticle(parseInt(req.params.id)).then(user=>res.json(user))}
  catch(error){
   console.error(error);

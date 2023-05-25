@@ -3,6 +3,7 @@ var router = express.Router()
 
 const {getCommentaires, getCommentaire, addCommentaire,delCommentaire,updateCommentaire}=require('../models/commentaire')
 
+const authentification=require('../middleware/authentification')
 
 /**
  * get all commentaires
@@ -33,7 +34,7 @@ router.get('/:id([0-9]+)', function(req, res, next) {
 /**
  * create a new commentaire
  */
-router.post('/', function(req, res, next) {
+router.post('/', authentification,function(req, res, next) {
  try{addCommentaire(req.body).then(user=>res.json(user))}
  catch(error){
   console.error(error);
@@ -45,7 +46,7 @@ router.post('/', function(req, res, next) {
  * upadte a commentaire
  */
 
-router.patch('/',function(req, res, next) {
+router.patch('/', authentification,function(req, res, next) {
   try{updateCommentaire(req.body).then(user=>res.json(user))}
   catch(error){
    console.error(error);
@@ -56,7 +57,7 @@ router.patch('/',function(req, res, next) {
 /**
  * delete a commentaire
  */
-router.delete('/:id([0-9]+)', function(req, res, next) {
+router.delete('/:id([0-9]+)', authentification, function(req, res, next) {
  try{delCommentaire(parseInt(req.params.id)).then(user=>res.json(user))}
  catch(error){
   console.error(error);
