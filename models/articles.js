@@ -31,4 +31,96 @@ function delArticle(id) {
     })
     
 }
-module.exports={getArticles, getArticle, addArticle,delArticle,updateArticle};
+
+
+
+function getArticlesContent(take=100,skip=0){
+ 
+    try {
+      const articles =  prisma.article.findMany({
+        select: {
+            id:true,
+            titre: true,
+            contenu: true,
+            image: true,
+            createAt: true,
+            updateAt: true,
+            published: true,
+            commentaire: {
+              select: {
+                email: true,
+                contenu: true,
+                createAt: true,
+                updateAt: true
+              }
+            },
+            Utilisateur: {
+              select: {
+                nom: true,
+                role: true,
+                email: true,
+              }
+            },
+            CategorieArticle: {
+              select: {
+                categorie: {
+                  select: {
+                    nom: true
+                  }
+                }
+              }
+            }
+          }
+      });
+      return articles;
+    } catch (error) {
+      throw error;
+    }
+  
+}
+
+function getArticlesContentById(id){
+try {
+const article =  prisma.article.findUnique({
+where :{id},
+select: {
+   titre: true,
+   contenu: true,
+   image: true,
+   createAt: true,
+   updateAt: true,
+   published: true,
+   commentaire: {
+     select: {
+       email: true,
+       contenu: true,
+       createAt: true,
+       updateAt: true
+     }
+   },
+   Utilisateur: {
+     select: {
+       nom: true,
+       role: true,
+       email: true,
+     }
+   },
+   CategorieArticle: {
+     select: {
+       categorie: {
+         select: {
+           nom: true
+         }
+       }
+     }
+   }
+ }
+});
+return article;
+} catch (error) {
+throw error;
+}
+
+}
+
+module.exports={getArticles, getArticle, addArticle,delArticle,updateArticle,getArticlesContent,getArticlesContentById};

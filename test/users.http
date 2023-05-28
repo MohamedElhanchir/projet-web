@@ -33,7 +33,7 @@ Content-Type: application/json
 
 
 {
-  "id":15,
+  "id":16,
   "nom": "karima",
   "email": "karima@gmail.com",
   "Password": "0000",
@@ -41,5 +41,5 @@ Content-Type: application/json
 }
 
 ###delete user
-DELETE   http://localhost:3000/users/15
+DELETE   http://localhost:3000/users/16
 

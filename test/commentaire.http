@@ -4,7 +4,7 @@ GET http://localhost:3000/commentaires/?take=30&skip=0
 GET http://localhost:3000/commentaires/
 
 ###
-GET http://localhost:3000/commentaires/1
+GET http://localhost:3000/commentaires/3
 ###
 POST http://localhost:3000/commentaires/ 
 Content-Type: application/json
@@ -19,11 +19,11 @@ PATCH  http://localhost:3000/commentaires/
 Content-Type: application/json
 
 {
-  "id": 966,
+  "id": 967,
   "email": "fouadojojk@gmail.com",
   "contenu": "ggggggggg",
   "articleId": 7
 }
 ###
-DELETE http://localhost:3000/commentaires/966
+DELETE http://localhost:3000/commentaires/967
 

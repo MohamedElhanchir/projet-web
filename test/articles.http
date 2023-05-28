@@ -2,7 +2,7 @@
 GET http://localhost:3000/articles/?take=9&skip=0
 
 ###
-GET http://localhost:3000/articles/1
+GET http://localhost:3000/articles/7
 ###
 POST http://localhost:3000/articles/ 
 Content-Type: application/json
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 
 {
-  "id": 106,
+  "id": 108,
   "titre": "book",
   "contenu": "math",
   "image": "io.jpg",
@@ -33,5 +33,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE   http://localhost:3000/articles/107
+DELETE   http://localhost:3000/articles/108
 

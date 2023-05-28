@@ -11,7 +11,7 @@ const authentification=require('../middleware/authentification')
 router.get('/', function(req, res, next) {
   const {take,skip}=req.query;
   try{
-  getCategories(take,skip).then(users=>res.json(users))
+  getCategories(take,skip).then(categories=>res.json(categories))
    }
    catch(error){
     console.error(error);
@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
  * get categorie by id
  */
 router.get('/:id([0-9]+)', function(req, res, next) {
-   try{getCategorie(parseInt(req.params.id)).then(user=>res.json(user))}
+   try{getCategorie(parseInt(req.params.id)).then(categorie=>res.json(categorie))}
    catch(error){
     console.error(error);
     res.status(500).json({ error: 'Une erreur est survenue lors de la récupération du categorie '+ parseInt(req.params.id)});
@@ -35,7 +35,7 @@ router.get('/:id([0-9]+)', function(req, res, next) {
  * create a new categorie
  */
 router.post('/', authentification,function(req, res) {
- try{addCategorie(req.body).then(user=>res.json(user))}
+ try{addCategorie(req.body).then(categorie=>res.json(categorie))}
  catch(error){
   console.error(error);
   res.status(500).json({ error: 'Une erreur est survenue lors de la création du categorie '});
@@ -47,7 +47,7 @@ router.post('/', authentification,function(req, res) {
  */
 
 router.patch('/',authentification,function(req, res) {
-  try{updateCategorie(req.body).then(user=>res.json(user))}
+  try{updateCategorie(req.body).then(categorie=>res.json(categorie))}
   catch(error){
    console.error(error);
    res.status(500).json({ error: 'Une erreur est survenue lors de la modification du categorie '+ parseInt(req.body.id)});
@@ -58,10 +58,10 @@ router.patch('/',authentification,function(req, res) {
  * delete a categorie
  */
 router.delete('/:id([0-9]+)', authentification, (req, res, next) => {
-    try { delCategorie(parseInt(req.params.id)).then(user => res.json(user)); }
+    try { delCategorie(parseInt(req.params.id)).then(categorie => res.json(categorie)); }
     catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Une erreur est survenue lors de la création du categorie ' + parseInt(req.params.id) });
+      res.status(500).json({ error: 'Une erreur est survenue lors de la suppression du categorie ' + parseInt(req.params.id) });
     }
   });
 

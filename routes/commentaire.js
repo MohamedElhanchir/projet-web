@@ -11,7 +11,7 @@ const authentification=require('../middleware/authentification')
 router.get('/', function(req, res, next) {
   const {take,skip}=req.query;
   try{
-  getCommentaires(take,skip).then(users=>res.json(users))
+  getCommentaires(take,skip).then(commenaires=>res.json(commenaires))
    }
    catch(error){
     console.error(error);
@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
  * get commentaire by id
  */
 router.get('/:id([0-9]+)', function(req, res, next) {
-   try{getCommentaire(parseInt(req.params.id)).then(user=>res.json(user))}
+   try{getCommentaire(parseInt(req.params.id)).then(commenaire=>res.json(commenaire))}
    catch(error){
     console.error(error);
     res.status(500).json({ error: 'Une erreur est survenue lors de la récupération du commentaire '+ parseInt(req.params.id)});
@@ -35,7 +35,7 @@ router.get('/:id([0-9]+)', function(req, res, next) {
  * create a new commentaire
  */
 router.post('/', authentification,function(req, res, next) {
- try{addCommentaire(req.body).then(user=>res.json(user))}
+ try{addCommentaire(req.body).then(commenaire=>res.json(commenaire))}
  catch(error){
   console.error(error);
   res.status(500).json({ error: 'Une erreur est survenue lors de la création du commentaire '});
@@ -47,7 +47,7 @@ router.post('/', authentification,function(req, res, next) {
  */
 
 router.patch('/', authentification,function(req, res, next) {
-  try{updateCommentaire(req.body).then(user=>res.json(user))}
+  try{updateCommentaire(req.body).then(commenaire=>res.json(commenaire))}
   catch(error){
    console.error(error);
    res.status(500).json({ error: 'Une erreur est survenue lors de la modification du commentaire '+ parseInt(req.body.id)});
@@ -58,10 +58,10 @@ router.patch('/', authentification,function(req, res, next) {
  * delete a commentaire
  */
 router.delete('/:id([0-9]+)', authentification, function(req, res, next) {
- try{delCommentaire(parseInt(req.params.id)).then(user=>res.json(user))}
+ try{delCommentaire(parseInt(req.params.id)).then(commenaire=>res.json(commenaire))}
  catch(error){
   console.error(error);
-  res.status(500).json({ error: 'Une erreur est survenue lors de la création du commentaire '+ parseInt(req.params.id)});
+  res.status(500).json({ error: 'Une erreur est survenue lors de la suppression du commentaire '+ parseInt(req.params.id)});
   }
 });
 

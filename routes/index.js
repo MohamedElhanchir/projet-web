@@ -38,8 +38,8 @@ router.post('/login', async function(req, res, next) {
 
 // Route pour la déconnexion
 router.post('/logout', (req, res) => {
-  res.clearCookie('jwt');
-  res.json({ message: 'Déconnexion réussie' });
+  res.clearCookie('jwt')
+  res.json({ message: 'Déconnexion réussie' })
 });
 
 module.exports = router;

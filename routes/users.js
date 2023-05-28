@@ -61,7 +61,7 @@ router.delete('/:id([0-9]+)', authentification,function(req, res, next) {
  try{delUser(parseInt(req.params.id)).then(user=>res.json(user))}
  catch(error){
   console.error(error);
-  res.status(500).json({ error: 'Une erreur est survenue lors de la création d\'utilistateur '+parseInt(req.params.id)});
+  res.status(500).json({ error: 'Une erreur est survenue lors de la suppression d\'utilistateur '+parseInt(req.params.id)});
   }
 });
 

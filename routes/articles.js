@@ -3,7 +3,8 @@ var router = express.Router()
 
 const authentification=require('../middleware/authentification')
 
-const {getArticles, getArticle, addArticle,delArticle,updateArticle}=require('../models/articles')
+const {getArticles, getArticle, addArticle,delArticle,updateArticle,getArticlesContentById,
+       getArticlesContent}=require('../models/articles')
 
 
 /**
@@ -12,7 +13,7 @@ const {getArticles, getArticle, addArticle,delArticle,updateArticle}=require('..
 router.get('/', function(req, res, next) {
   const {take,skip}=req.query;
   try{
-  getArticles(take,skip).then(users=>res.json(users))
+  getArticles(take,skip).then(articles=>res.json(articles))
    }
    catch(error){
     console.error(error);
@@ -24,7 +25,7 @@ router.get('/', function(req, res, next) {
  * get article by id
  */
 router.get('/:id([0-9]+)',function(req, res, next) {
-   try{getArticle(parseInt(req.params.id)).then(user=>res.json(user))}
+   try{getArticle(parseInt(req.params.id)).then(article=>res.json(article))}
    catch(error){
     console.error(error);
     res.status(500).json({ error: 'Une erreur est survenue lors de la récupération d\'article '+ parseInt(req.params.id)});
@@ -36,7 +37,7 @@ router.get('/:id([0-9]+)',function(req, res, next) {
  * create a new article
  */
 router.post('/', authentification,function(req, res, next) {
- try{addArticle(req.body).then(user=>res.json(user))}
+ try{addArticle(req.body).then(article=>res.json(article))}
  catch(error){
   console.error(error);
   res.status(500).json({ error: 'Une erreur est survenue lors de la création d\'article '});
@@ -47,7 +48,7 @@ router.post('/', authentification,function(req, res, next) {
  * upadte article
  */
 router.patch('/',authentification,function(req, res, next) {
-  try{updateArticle(req.body).then(user=>res.json(user))}
+  try{updateArticle(req.body).then(article=>res.json(article))}
   catch(error){
    console.error(error);
    res.status(500).json({ error: 'Une erreur est survenue lors de la modification d\'article '});
@@ -58,12 +59,32 @@ router.patch('/',authentification,function(req, res, next) {
  * delete a article
  */
 router.delete('/:id([0-9]+)',authentification,function(req, res, next) {
- try{delArticle(parseInt(req.params.id)).then(user=>res.json(user))}
+ try{delArticle(parseInt(req.params.id)).then(article=>res.json(article))}
  catch(error){
   console.error(error);
-  res.status(500).json({ error: 'Une erreur est survenue lors de la création d\'article '});
+  res.status(500).json({ error: 'Une erreur est survenue lors de la suppression d\'article '});
   }
 });
+/**
+ * get all articles with content
+ */
+router.get('/contenu',async (req, res) => {
+  try{getArticlesContent().then(articles=>res.json(articles))}
+  catch(error){
+   console.error(error);
+   res.status(500).json({ error });
+   }
+})
 
+/**
+ * get all article with content
+ */
+router.get('/contenuById:id([0-9]+)',async (req, res) => {
+  try{getArticlesContentById(parseInt(req.params.id)).then(article=>res.json(article))}
+  catch(error){
+   console.error(error);
+   res.status(500).json({ error });
+   }
+})
 
 module.exports = router;
