@@ -6,7 +6,6 @@
 ## Installation
 ```bash
   git clone https://github.com/MohamedElhanchir/projet-web.git
-  express --no-view .
   npm i
   npm i -D prisma
   npm i faker
