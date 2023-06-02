@@ -7,22 +7,8 @@
 ```bash
   git clone https://github.com/MohamedElhanchir/projet-web.git
   npm i
-  npm i -D prisma
-  npm i faker
-  npm i -S jsonwebtoken
   ```
-  dans le fichier package.json remplcer:
-  ```bash
-   "scripts": {
-    "start": "node ./bin/www"
-  }
-  ```
-  par
- ```bash
-    "scripts": {
-    "start": "nodemon ./bin/www"
-  }
-  ```
+
 
   ## Environment Variables
 
