@@ -27,7 +27,8 @@ router.get('/:id([0-9]+)', function(req, res, next) {
    try{getUser(parseInt(req.params.id)).then(user=>res.json(user))}
    catch(error){
     console.error(error);
-    res.status(500).json({ error: 'Une erreur est survenue lors de la récupération d\'utilistateur '+ parseInt(req.params.id)});
+    res.status(500).json({ error: 'Une erreur est survenue lors de la récupération d\'utilistateur '+
+     parseInt(req.params.id)});
     }
 });
 

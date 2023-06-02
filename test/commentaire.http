@@ -10,7 +10,7 @@ POST http://localhost:3000/commentaires/
 Content-Type: application/json
 
 {
-  "email": "fouad55@gmail.com",
+  "email": "elhanchir55@gmail.com",
   "contenu": "thank you",
   "articleId": 8
 }
@@ -20,8 +20,8 @@ Content-Type: application/json
 
 {
   "id": 967,
-  "email": "fouadojojk@gmail.com",
-  "contenu": "ggggggggg",
+  "email": "elhanchirMohamed@gmail.com",
+  "contenu": "good",
   "articleId": 7
 }
 ###

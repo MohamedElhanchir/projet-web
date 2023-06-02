@@ -4,7 +4,6 @@ const jwt=require('jsonwebtoken')
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-
 // Route pour la connexion
 router.post('/login', async function(req, res, next) {
   try {
@@ -34,7 +33,6 @@ router.post('/login', async function(req, res, next) {
     res.status(500).json({ message: 'Erreur lors de l\'authentification.' })
   }
 })
-
 
 // Route pour la déconnexion
 router.post('/logout', (req, res) => {
